@@ -8,8 +8,9 @@ def build(_, clean=False):
     print('Building!')
 
 
-@task
+@task(help={'name': 'Name of the person to say hi to.'})
 def hi(_, name):
+    """Say hi to someone."""
     print('Hi %s!' % name)
 
 
