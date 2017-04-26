@@ -1,7 +1,7 @@
 from invoke import MockContext, Result
 
 from tasks import build, hi, pre_task, show_platform, task_itself
-from tests.test_utils import MockStdoutTestCase
+from tests.helpers import MockStdoutTestCase
 
 
 class BuildTest(MockStdoutTestCase):

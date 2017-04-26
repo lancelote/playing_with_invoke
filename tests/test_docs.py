@@ -1,7 +1,7 @@
 from invoke import MockContext
 
 from docs import generate
-from tests.test_utils import MockStdoutTestCase
+from tests.helpers import MockStdoutTestCase
 
 
 class GenerateDocsTest(MockStdoutTestCase):
