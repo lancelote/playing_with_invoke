@@ -8,14 +8,14 @@ from invoke import MockContext, Result
 from tasks import build, show_platform
 
 
-class MockSysTestCase(unittest.TestCase):
+class MockStdoutTestCase(unittest.TestCase):
     def setUp(self):
         patcher = patch('sys.stdout', new=io.StringIO())
         self.addCleanup(patcher.stop)
         patcher.start()
 
 
-class BuildTest(MockSysTestCase):
+class BuildTest(MockStdoutTestCase):
     def test_build_prints_correct_result(self):
         build(MockContext())
         self.assertEqual('Building!\n', sys.stdout.getvalue())
@@ -25,7 +25,7 @@ class BuildTest(MockSysTestCase):
         self.assertEqual('Cleaning!\nBuilding!\n', sys.stdout.getvalue())
 
 
-class ShowPlatformTest(MockSysTestCase):
+class ShowPlatformTest(MockStdoutTestCase):
     def test_show_platform_on_mac(self):
         c = MockContext(run=Result("Darwin\n"))
         show_platform(c)
