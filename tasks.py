@@ -2,6 +2,16 @@ from invoke import task
 
 
 @task
+def pre_task(_):
+    print('Pre-task')
+
+
+@task(pre_task)
+def task_itself(_):
+    print('Task itself')
+
+
+@task
 def build(_, clean=False):
     if clean:
         print('Cleaning!')
