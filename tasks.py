@@ -1,4 +1,6 @@
-from invoke import task
+from invoke import Collection, task
+
+import docs
 
 
 @task
@@ -35,3 +37,6 @@ def platform_response(uname):
         return "You paid the Apple tax!"
     elif uname == 'Linux':
         return "Year of Linux on the desktop!"
+
+
+namespace = Collection(docs, build, hi, show_platform)

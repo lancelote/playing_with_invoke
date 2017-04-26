@@ -1,24 +1,7 @@
-import io
-import sys
-import unittest
-from unittest.mock import patch
-
 from invoke import MockContext, Result
 
 from tasks import build, hi, pre_task, show_platform, task_itself
-
-
-class MockStdoutTestCase(unittest.TestCase):
-    def setUp(self):
-        patcher = patch('sys.stdout', new=io.StringIO())
-        self.addCleanup(patcher.stop)
-        patcher.start()
-
-    def assertStdout(self, expected):
-        self.assertEqual(expected, sys.stdout.getvalue())
-
-    def assertInStdout(self, expected):
-        self.assertIn(expected, sys.stdout.getvalue())
+from tests.test_utils import MockStdoutTestCase
 
 
 class BuildTest(MockStdoutTestCase):
