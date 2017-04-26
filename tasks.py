@@ -9,6 +9,11 @@ def build(_, clean=False):
 
 
 @task
+def hi(_, name):
+    print('Hi %s!' % name)
+
+
+@task
 def show_platform(ctx):
     uname = ctx.run("uname -s").stdout.strip()
     print(platform_response(uname))

@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from invoke import MockContext, Result
 
-from tasks import build, show_platform
+from tasks import build, hi, show_platform
 
 
 class MockStdoutTestCase(unittest.TestCase):
@@ -23,6 +23,16 @@ class BuildTest(MockStdoutTestCase):
     def test_clean(self):
         build(MockContext(), clean=True)
         self.assertEqual('Cleaning!\nBuilding!\n', sys.stdout.getvalue())
+
+
+class HiTest(MockStdoutTestCase):
+    def test_hi_returns_correct_result_1(self):
+        hi(MockContext(), name='Cassandra')
+        self.assertEqual('Hi Cassandra!\n', sys.stdout.getvalue())
+
+    def test_hi_return_correct_result_2(self):
+        hi(MockContext(), name='Pandora')
+        self.assertEqual('Hi Pandora!\n', sys.stdout.getvalue())
 
 
 class ShowPlatformTest(MockStdoutTestCase):
