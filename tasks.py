@@ -39,4 +39,20 @@ def platform_response(uname):
         return "Year of Linux on the desktop!"
 
 
-namespace = Collection(docs, build, hi, show_platform)
+# Optional value #
+##################
+
+
+@task(optional=['log'])
+def compile(ctx, log=None):
+    if log:
+        log_file = 'output.log'
+        # Value was given
+        if isinstance(log, str):
+            log_file = log
+            # Set log destination
+    print(f'Log value is {log}')
+    # Do something
+
+
+namespace = Collection(docs, build, hi, compile, show_platform)

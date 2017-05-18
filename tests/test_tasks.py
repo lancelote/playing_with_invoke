@@ -44,3 +44,7 @@ class TaskItselfTest(MockStdoutTestCase):
     def test_print_correct_result(self):
         task_itself(MockContext())
         self.assertStdout('Task itself\n')
+
+
+class TestCompile(MockStdoutTestCase):
+    pass  # ToDo : Write tests for the compile task
