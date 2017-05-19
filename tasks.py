@@ -55,4 +55,17 @@ def compile_src(_, log=None):
     # Do something
 
 
-namespace = Collection(docs, build, hi, compile_src, show_platform)
+# Inverse boolean flag #
+########################
+
+
+@task
+def make_painting(_, colors=True):
+    if colors:
+        print('Painting in colors')
+    else:
+        print('Black & white painting')
+
+
+namespace = Collection(docs, build, hi, compile_src, show_platform,
+                       make_painting)
