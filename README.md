@@ -4,4 +4,17 @@
 
 Code examples from [invoke][1] documentation, experiments with it and tests
 
+## Reading Progress
+
+ - [x] Getting Started
+ - [ ] Command-line parsing
+ - [ ] Configuration
+ - [ ] Task Execution
+ - [ ] Using Invoke as a library
+ - [ ] Loading collections
+ - [ ] Constructing namespaces
+ - [x] Testing Invoke-using codebases
+ - [ ] Automatically responding to program output
+ - [ ] Command-line interface
+
  [1]: http://www.pyinvoke.org
