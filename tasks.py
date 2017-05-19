@@ -44,13 +44,13 @@ def platform_response(uname):
 
 
 @task(optional=['log'])
-def compile(ctx, log=None):
+def compile_src(_, log=None):
     if log:
         log_file = 'output.log'
         # Value was given
         if isinstance(log, str):
             log_file = log
-            # Set log destination
+        print(f'Log destination is {log_file}')
     print(f'Log value is {log}')
     # Do something
 
