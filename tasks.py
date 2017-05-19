@@ -55,4 +55,4 @@ def compile_src(_, log=None):
     # Do something
 
 
-namespace = Collection(docs, build, hi, compile, show_platform)
+namespace = Collection(docs, build, hi, compile_src, show_platform)

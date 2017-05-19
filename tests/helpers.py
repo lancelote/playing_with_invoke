@@ -12,7 +12,8 @@ class MockStdoutTestCase(unittest.TestCase):
         self.addCleanup(patcher.stop)
         patcher.start()
 
-    def assertStdout(self, expected):
+    def assertStdout(self, expected, new_line=True):
+        expected += '\n' if new_line else ''
         self.assertEqual(expected, sys.stdout.getvalue())
 
     def assertInStdout(self, expected):
