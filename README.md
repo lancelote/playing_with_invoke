@@ -7,8 +7,8 @@ Code examples from [invoke][1] documentation, experiments with it and tests
 ## Reading Progress
 
  - [x] Getting Started
- - [ ] Command-line parsing
- - [ ] Configuration
+ - [x] Command-line parsing
+ - [x] Configuration
  - [ ] Task Execution
  - [ ] Using Invoke as a library
  - [ ] Loading collections
