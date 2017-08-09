@@ -71,5 +71,29 @@ def make_painting(_, colors=True):
         print('Black & white painting')
 
 
+# Task Execution #
+##################
+
+
+@task
+def hello(ctx):
+    print('hello world')
+
+
+@task
+def cleaning(ctx):
+    print('Cleaning')
+
+
+@task
+def publishing(ctx):
+    print('Publishing')
+
+
+@task(pre=[cleaning], post=[publishing])
+def building(cxt):
+    print('Building')
+
+
 namespace = Collection(docs, build, hi, compile_src, show_platform,
-                       make_painting)
+                       make_painting, hello, cleaning, publishing, building)
