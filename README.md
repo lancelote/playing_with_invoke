@@ -6,7 +6,7 @@ Code examples from [invoke][1] documentation, experiments with it and tests
 
 ## Reading Progress
 
- - [ ] Getting Started
+ - [x] Getting Started
  - [ ] Invoke core usage
  - [ ] Configuration
  - [ ] Invoking tasks

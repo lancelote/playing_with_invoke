@@ -7,93 +7,70 @@ import docs
 ###################
 
 
+# Defining and running task functions
 @task
-def pre_task(_):
-    print('Pre-task')
+def build(_):
+    """
+        invoke build
+    """
+    print('building')
 
 
-@task(pre_task)
-def task_itself(_):
-    print('Task itself')
-
-
+# Task parameters
 @task
-def build(_, clean=False):
+def build2(_, clean=False):
+    """
+        invoke build2 -c
+        invoke build2 --clean
+        """
     if clean:
-        print('Cleaning!')
-    print('Building!')
+        print('cleaning')
+    print('building')
 
 
-@task(help={'name': 'Name of the person to say hi to.'})
+@task
 def hi(_, name):
-    """Say hi to someone."""
-    print('Hi %s!' % name)
+    """
+        invoke hi Name
+        invoke hi --name Name
+        invoke hi --name=Name
+        invoke hi -n Name
+        invoke hi -nName
+    """
+    print('hi %s' % name)
 
 
+# Adding metadata via @task
+@task(help={'name': 'name of the person to say hi to'})
+def hi2(_, name):
+    """
+        invoke --help hi
+    """
+    print('hi %s' % name)
+
+
+# Running shell commands
 @task
-def show_platform(ctx):
-    uname = ctx.run("uname -s").stdout.strip()
-    print(platform_response(uname))
+def ls(c):
+    c.run('ls')
 
 
-def platform_response(uname):
-    if uname == 'Darwin':
-        return "You paid the Apple tax!"
-    elif uname == 'Linux':
-        return "Year of Linux on the desktop!"
-
-
-# Optional value #
-##################
-
-
-@task(optional=['log'])
-def compile_src(_, log=None):
-    if log:
-        log_file = 'output.log'
-        # Value was given
-        if isinstance(log, str):
-            log_file = log
-        print(f'Log destination is {log_file}')
-    print(f'Log value is {log}')
-    # Do something
-
-
-# Inverse boolean flag #
-########################
-
-
+# Declaring pre-tasks
 @task
-def make_painting(_, colors=True):
-    if colors:
-        print('Painting in colors')
-    else:
-        print('Black & white painting')
+def clean_all(c):
+    c.run('echo removing all...')
 
 
-# Task Execution #
-##################
+@task(clean_all)
+def build_all(c):
+    c.run('echo building all...')
 
 
+# Creating namespaces
 @task
-def hello(ctx):
-    print('hello world')
+def deploy(c):
+    c.run('echo deploying')
 
 
-@task
-def cleaning(ctx):
-    print('Cleaning')
-
-
-@task
-def publishing(ctx):
-    print('Publishing')
-
-
-@task(pre=[cleaning], post=[publishing])
-def building(cxt):
-    print('Building')
-
-
-namespace = Collection(docs, build, hi, compile_src, show_platform,
-                       make_painting, hello, cleaning, publishing, building)
+namespace = Collection(docs, deploy, build_all, clean_all, ls, hi, hi2,
+                       build, build2)
