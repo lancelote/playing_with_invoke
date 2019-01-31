@@ -3,8 +3,8 @@ from invoke import Collection, task
 import docs
 
 
-# Getting Started #
-###################
+# Getting Started                                                             #
+###############################################################################
 
 
 # Defining and running task functions
@@ -74,3 +74,16 @@ def deploy(c):
 
 namespace = Collection(docs, deploy, build_all, clean_all, ls, hi, hi2,
                        build, build2)
+
+
+# Testing Invoke-using codebases                                              #
+###############################################################################
+
+
+@task
+def show_platform(c):
+    uname = c.run('uname -s').stdout.strip()
+    if uname == 'Darwin':
+        print('You paid the Apple tax!')
+    elif uname == 'Linux':
+        print('Year of Linux on the desktop!')
