@@ -13,7 +13,7 @@ Code examples from [invoke][1] documentation, experiments with it and tests
  - [ ] Using Invoke as a library
  - [ ] Loading collections
  - [ ] Constructing namespaces
- - [ ] Testing Invoke-using codebases
+ - [x] Testing Invoke-using codebases
  - [ ] Automatically responding to program output
  - [ ] API
 
