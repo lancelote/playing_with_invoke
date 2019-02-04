@@ -1,6 +1,7 @@
 from invoke import MockContext, Result
 
-from tasks import platform_response, platform_response2, show_platform
+from chapters.testing_invoke_using_codebases.tasks import platform_response, \
+    platform_response2, show_platform
 
 
 # Use MockContext
@@ -27,8 +28,8 @@ def test_platform_response_on_linux():
 
 # Avoid mocking dependency code paths altogether
 def test_platform_response_on_mac2():
-    assert 'Apple' in platform_response2('Darwin\n')
+    assert 'Apple' in platform_response2('Darwin')
 
 
 def test_platform_response_on_linux2():
-    assert 'Linux' in platform_response2('Linux\n')
+    assert 'Linux' in platform_response2('Linux')
